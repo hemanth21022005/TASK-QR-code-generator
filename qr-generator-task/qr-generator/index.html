@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QR Code Generator</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- QR Code library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">&#9638;</span>
+        <span class="logo-text">QR<span class="accent">Forge</span></span>
+      </div>
+      <p class="tagline">Generate real QR codes — instantly, beautifully.</p>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="container">
+
+      <!-- TYPE SELECTOR -->
+      <section class="type-section">
+        <p class="section-label">What are you encoding?</p>
+        <div class="type-tabs" role="tablist">
+          <button class="tab active" data-type="url"      role="tab" aria-selected="true">URL</button>
+          <button class="tab"        data-type="text"     role="tab">Plain Text</button>
+          <button class="tab"        data-type="phone"    role="tab">Phone</button>
+          <button class="tab"        data-type="email"    role="tab">Email</button>
+          <button class="tab"        data-type="wifi"     role="tab">Wi-Fi</button>
+        </div>
+      </section>
+
+      <!-- INPUT FORMS -->
+      <section class="form-section">
+
+        <!-- URL -->
+        <div class="form-panel active" id="form-url">
+          <label class="field-label" for="input-url">Website URL</label>
+          <input class="field-input" id="input-url" type="url" placeholder="https://example.com" />
+        </div>
+
+        <!-- TEXT -->
+        <div class="form-panel" id="form-text">
+          <label class="field-label" for="input-text">Plain Text</label>
+          <textarea class="field-textarea" id="input-text" placeholder="Enter any text…" rows="4"></textarea>
+        </div>
+
+        <!-- PHONE -->
+        <div class="form-panel" id="form-phone">
+          <label class="field-label" for="input-phone">Phone Number</label>
+          <input class="field-input" id="input-phone" type="tel" placeholder="+91 9876543210" />
+        </div>
+
+        <!-- EMAIL -->
+        <div class="form-panel" id="form-email">
+          <label class="field-label" for="input-email-addr">Email Address</label>
+          <input class="field-input" id="input-email-addr" type="email" placeholder="hello@example.com" />
+          <label class="field-label mt" for="input-email-sub">Subject <span class="optional">(optional)</span></label>
+          <input class="field-input" id="input-email-sub" type="text" placeholder="Subject line" />
+          <label class="field-label mt" for="input-email-body">Body <span class="optional">(optional)</span></label>
+          <textarea class="field-textarea" id="input-email-body" placeholder="Message body…" rows="3"></textarea>
+        </div>
+
+        <!-- WIFI -->
+        <div class="form-panel" id="form-wifi">
+          <label class="field-label" for="input-wifi-ssid">Network Name (SSID)</label>
+          <input class="field-input" id="input-wifi-ssid" type="text" placeholder="MyHomeNetwork" />
+          <label class="field-label mt" for="input-wifi-pass">Password</label>
+          <input class="field-input" id="input-wifi-pass" type="text" placeholder="Password" />
+          <label class="field-label mt" for="input-wifi-enc">Encryption</label>
+          <select class="field-select" id="input-wifi-enc">
+            <option value="WPA">WPA / WPA2</option>
+            <option value="WEP">WEP</option>
+            <option value="nopass">None (Open)</option>
+          </select>
+          <label class="checkbox-row mt">
+            <input type="checkbox" id="input-wifi-hidden" />
+            <span>Hidden network</span>
+          </label>
+        </div>
+
+      </section>
+
+      <!-- CUSTOMISE -->
+      <section class="customise-section">
+        <p class="section-label">Customise</p>
+        <div class="customise-row">
+          <div class="customise-field">
+            <label class="field-label" for="qr-size">Size</label>
+            <select class="field-select" id="qr-size">
+              <option value="128">Small — 128 px</option>
+              <option value="200" selected>Medium — 200 px</option>
+              <option value="300">Large — 300 px</option>
+              <option value="400">XL — 400 px</option>
+            </select>
+          </div>
+          <div class="customise-field">
+            <label class="field-label" for="qr-fg">Foreground</label>
+            <input class="color-picker" id="qr-fg" type="color" value="#0d1117" />
+          </div>
+          <div class="customise-field">
+            <label class="field-label" for="qr-bg">Background</label>
+            <input class="color-picker" id="qr-bg" type="color" value="#ffffff" />
+          </div>
+          <div class="customise-field">
+            <label class="field-label" for="qr-ec">Error Correction</label>
+            <select class="field-select" id="qr-ec">
+              <option value="L">Low (7%)</option>
+              <option value="M" selected>Medium (15%)</option>
+              <option value="Q">Quartile (25%)</option>
+              <option value="H">High (30%)</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- GENERATE BUTTON -->
+      <div class="generate-row">
+        <button class="btn-generate" id="btn-generate">Generate QR Code</button>
+      </div>
+
+      <!-- OUTPUT -->
+      <section class="output-section" id="output-section" aria-live="polite">
+        <div class="qr-card" id="qr-card">
+          <div id="qr-canvas-wrap"></div>
+          <p class="qr-data-label" id="qr-data-label"></p>
+          <div class="download-row">
+            <button class="btn-download" id="btn-png">Download PNG</button>
+            <button class="btn-download outline" id="btn-svg">Download SVG</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ERROR -->
+      <div class="error-toast" id="error-toast" role="alert"></div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-info">
+        <span class="footer-name">Pudukota Hemanth Kumar Singh</span>
+        <a class="footer-email" href="mailto:hemanthsingh432@gmail.com">hemanthsingh432@gmail.com</a>
+      </div>
+      <a
+        class="btn-heroes"
+        href="https://digitalheroes.in"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Built for Digital Heroes</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
