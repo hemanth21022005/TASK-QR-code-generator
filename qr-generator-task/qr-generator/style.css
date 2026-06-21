@@ -1,4 +1,3 @@
-/* ─── RESET & BASE ─────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -7,7 +6,7 @@
   --ink-muted: #6b7280;
   --canvas:    #f5f6fa;
   --surface:   #ffffff;
-  --accent:    #4f46e5;       /* indigo */
+  --accent:    #4f46e5;
   --accent-h:  #3730a3;
   --accent-lt: #ede9fe;
   --success:   #059669;
@@ -38,7 +37,6 @@ body {
   line-height: 1.6;
 }
 
-/* ─── HEADER ────────────────────────────────────────────────────── */
 .header {
   background: var(--ink);
   padding: 28px 24px 32px;
@@ -66,11 +64,9 @@ body {
   letter-spacing: .01em;
 }
 
-/* ─── MAIN ──────────────────────────────────────────────────────── */
 .main { flex: 1; padding: 40px 16px 60px; }
 .container { max-width: 740px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px; }
 
-/* ─── SECTION LABEL ─────────────────────────────────────────────── */
 .section-label {
   font-size: .72rem;
   font-weight: 700;
@@ -80,7 +76,6 @@ body {
   margin-bottom: 12px;
 }
 
-/* ─── TYPE TABS ─────────────────────────────────────────────────── */
 .type-section { background: var(--surface); border-radius: var(--radius); padding: 22px 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
 
 .type-tabs {
@@ -109,7 +104,6 @@ body {
   color: #fff;
 }
 
-/* ─── FORM SECTION ──────────────────────────────────────────────── */
 .form-section { background: var(--surface); border-radius: var(--radius); padding: 28px 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
 
 .form-panel { display: none; flex-direction: column; gap: 6px; }
@@ -146,7 +140,6 @@ body {
 .checkbox-row { display: flex; align-items: center; gap: 8px; font-size: .9rem; color: var(--ink-soft); cursor: pointer; }
 .checkbox-row input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--accent); cursor: pointer; }
 
-/* ─── CUSTOMISE ─────────────────────────────────────────────────── */
 .customise-section { background: var(--surface); border-radius: var(--radius); padding: 22px 24px; box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
 
 .customise-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
@@ -163,7 +156,6 @@ body {
 }
 .color-picker:focus { border-color: var(--accent); outline: none; }
 
-/* ─── GENERATE BUTTON ───────────────────────────────────────────── */
 .generate-row { text-align: center; }
 
 .btn-generate {
@@ -184,7 +176,6 @@ body {
 .btn-generate:hover { background: var(--accent-h); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(79,70,229,.4); }
 .btn-generate:active { transform: translateY(0); }
 
-/* ─── OUTPUT ────────────────────────────────────────────────────── */
 .output-section { display: none; }
 .output-section.visible { display: block; animation: fadeUp .35s ease; }
 
@@ -243,7 +234,6 @@ body {
 .btn-download.outline { background: transparent; color: var(--accent); }
 .btn-download.outline:hover { background: var(--accent-lt); }
 
-/* ─── ERROR TOAST ───────────────────────────────────────────────── */
 .error-toast {
   display: none;
   background: #fef2f2;
@@ -257,7 +247,6 @@ body {
 }
 .error-toast.visible { display: block; animation: fadeUp .25s ease; }
 
-/* ─── FOOTER ────────────────────────────────────────────────────── */
 .footer {
   background: var(--ink);
   padding: 24px 20px;
@@ -300,7 +289,6 @@ body {
 }
 .btn-heroes:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,58,237,.5); }
 
-/* ─── RESPONSIVE ────────────────────────────────────────────────── */
 @media (max-width: 520px) {
   .header { padding: 22px 16px 26px; }
   .logo { font-size: 1.6rem; }
